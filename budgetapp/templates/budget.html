@@ -23,11 +23,11 @@
     <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <br>
-        <h4 style="font-family: 'Times New Roman', Times, serif;"> Enter Your Expenses</h4>
+        <h4 style="font-family: 'Times New Roman', Times, serif;"> Enter Your budgets</h4>
         <hr>
        
         <div class="form-group">
-          <label for="exampleInputEmail1">Expenses Reason </label>
+          <label for="exampleInputEmail1">budgets Reason </label>
           <input type="text" name="name" class="form-control" required>
         </div>
         <div class="form-group">
@@ -39,7 +39,7 @@
  
     <div class="class mt-5">
         <form action="">
-          <button class="btn btn-primary"> <a class="ok" href="{% url 'pdf' %}">Total Expenses  </a></button>
+          <button class="btn btn-primary"> <a class="ok" href="{% url 'format' %}">Total budgets  </a></button>
           <button class="btn btn-danger"> <a class="ok" href="{% url 'logout' %}">Logout </a></button>
         </form>
  
@@ -47,21 +47,21 @@
             <thead>
                 <tr>
                     <th scope="col">S.No. </th>
-                    <th scope="col">Expenses Reason</th>
+                    <th scope="col">budgets Reason</th>
                     <th scope="col">Amount </th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for expense in expenses %}
+                {% for budget in budgets %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{expense.name}}</td>
-                    <td> ₹{{expense.price}}</td>
+                    <td>{{budget.name}}</td>
+                    <td> KSH{{budget.price}}</td>
  
                     <td>
-                        <a href="/delete_expense/{{expense.id }}" class="btn btn-danger m-2">Delete </a>
-                        <a href="/update_expense/{{expense.id }}" class="btn btn-success">Update </a>
+                        <a href="/delete_budget/{{budget.id }}" class="btn btn-danger m-2">Delete </a>
+                        <a href="/update_budget/{{budget.id }}" class="btn btn-success">Update </a>
                     </td>
                 </tr>
                 {% endfor %}

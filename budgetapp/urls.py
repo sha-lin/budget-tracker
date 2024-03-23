@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-import views
+from budgetapp import views
 
 urlpatterns=[
     path('logout/', views.custom_logout, name="logout"),
-    path('pdf/', views.pdf , name='pdf'),
-    path('admin/', admin.site.urls),
+    path('format/', views.format , name='format'),
     path('login/' , views.login_page, name='login'),
     path('register/', views.register_page, name='register'),
     path('', views.budgets, name='budgets'),

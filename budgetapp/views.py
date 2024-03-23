@@ -11,12 +11,12 @@ def budgets(request):
     salary = 0
     if request.method == 'POST':
         data = request.POST
-        salary = int(data.get('salary', 0))
+        earnings = int(data.get('salary', 0))
         name = data.get('name')
         price = int(data.get('price', 0))
  
         Budget.objects.create(
-            salary=salary,
+            earnings=earnings,
             name=name,
             price=price,
         )
@@ -31,7 +31,7 @@ def budgets(request):
     total_sum = sum(budget.price for budget in queryset)
      
     context = {'budgets': queryset, 'total_sum': total_sum}
-    return render(request, 'budgets.html', context)
+    return render(request, 'budget.html', context)
  
 # Update the budgets data
 @login_required(login_url='/login/')
@@ -71,7 +71,7 @@ def login_page(request):
             user_auth = authenticate(username=username, password=password)
             if user_auth:
                 login(request, user_auth)
-                return redirect('budgets')
+                return redirect('budget')
             messages.error(request, "Wrong Password")
             return redirect('/login/')
         except Exception as e:
@@ -106,19 +106,19 @@ def custom_logout(request):
  
 # Generate the Bill
 @login_required(login_url='/login/')
-def pdf(request):
+def format(request):
     if request.method == 'POST':
         data = request.POST
-        salary = int(data.get('salary'))
+        earnings = int(data.get('earnings'))
         name = data.get('name')
         price = int(data.get('price', 0))
  
         Budget.objects.create(
-            salary=salary,
+            earnings=earnings,
             name=name,
             price=price,
         )
-        return redirect('pdf')
+        return redirect('format')
  
     queryset = Budget.objects.all()
     if request.GET.get('search'):
@@ -130,5 +130,5 @@ def pdf(request):
     # Get the username
     username = request.user.username
  
-    context = {'budgets': queryset, 'total_sum': total_sum, 'username':username}
-    return render(request, 'pdf.html', context)
+    context = {'budget': queryset, 'total_sum': total_sum, 'username':username}
+    return render(request, 'format.html', context)

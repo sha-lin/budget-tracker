@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Expense</title>
+	<title>budget</title>
 
 	<!-- Add Bootstrap CSS Link -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 			margin: 30px auto;
 		}
 
-		.expense-container {
+		.budget-container {
 			padding: 20px;
 			border: 1px solid #000;
 			border-radius: 5px;
@@ -26,37 +26,37 @@
 			margin-top: 30px;
 		}
 
-		.expense-header {
+		.budget-header {
 			text-align: center;
 		}
 
-		.expense-title {
+		.budget-title {
 			font-size: 24px;
 			color: #333;
 			margin-top: 20px;
 		}
 
-		.expense-table {
+		.budget-table {
 			width: 100%;
 			margin-top: 20px;
 			border-collapse: collapse;
 		}
 
-		.expense-table th,
-		.expense-table td {
+		.budget-table th,
+		.budget-table td {
 			border: 1px solid #ddd;
 			padding: 12px;
 			text-align: left;
 		}
 
-		.expense-total {
+		.budget-total {
 			font-size: 20px;
 			font-weight: bold;
 			color: #333;
 			margin-top: 20px;
 		}
 
-		.expense-footer {
+		.budget-footer {
 			margin-top: 20px;
 			font-size: 16px;
 			color: #555;
@@ -80,35 +80,35 @@
 
 <body>
 
-	<div class="container expense-container">
-		<div class="expense-header">
+	<div class="container budget-container">
+		<div class="budget-header">
 			<img src="https://i.ibb.co/7QJjfxV/images-1.jpg" alt="">
-			<div class="expense-title">
-				<h4>{{ username }}, Your Finance Record</h4>
+			<div class="budget-title">
+				<h4>{{ username }}, Your Budget Record</h4>
 			</div>
 		</div>
 		<br>
 
-		<table class="expense-table">
+		<table class="budget-table">
 			<thead>
 				<tr>
-					<th>Expenses Reason</th>
+					<th>budgets Reason</th>
 					<th>Amount</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for expense in expenses %}
+				{% for budget in budgets %}
 				<tr>
-					<td>{{ expense.name }}</td>
-					<td> ₹{{ expense.price }}</td>
+					<td>{{ budget.name }}</td>
+					<td> KSH{{ budget.price }}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
 
-		<p class="expense-total">Total Expenses: ₹{{ total_sum }}</p>
-		<div class="expense-footer">
-			<p>Dear {{ username }}, You Expenses is ₹{{total_sum}}.</p>
+		<p class="budget-total">Total budgets: KSH{{ total_sum }}</p>
+		<div class="budget-footer">
+			<p>Dear {{ username }}, You budgets is KSH{{total_sum}}.</p>
 		</div>
 	</div> 
 	<!-- Add Bootstrap JS and jQuery -->
